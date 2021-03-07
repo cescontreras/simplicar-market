@@ -8,9 +8,9 @@
       </b-navbar-brand>
 
       <b-navbar-nav>
-        <b-nav-item href="#" class="nav-link">
-          <strong>VEHICULOS</strong></b-nav-item
-        >
+        <b-nav-item to="/vehiculos" class="nav-link">
+          <strong>VEHICULOS</strong>
+          </b-nav-item>
         <b-nav-item href="#" class="nav-link"
           ><strong>DESCUBRI NISSAN</strong></b-nav-item
         >

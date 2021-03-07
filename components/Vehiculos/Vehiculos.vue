@@ -11,10 +11,21 @@
 
 <script>
 import VehiculoCard from "./VehiculoCard";
+import { mapState } from "vuex";
 
 export default {
   name: "Vehiculos",
-  components: {VehiculoCard}
+  components: { VehiculoCard },
+  computed: {
+    ...mapState({
+      vehiculos: state => state.store.vehiculos
+    })
+  },
+  mounted() {
+    // console.log(this.vehiculos);
+    this.$store.dispatch('store/getVehiculos')
+    
+  }
 };
 </script>
 

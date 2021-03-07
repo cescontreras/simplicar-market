@@ -23,10 +23,12 @@
       </b-card-body>
 
       <b-list-group flush>
+        <b-link to="vehiculos/id">
         <b-list-group-item class="nissan-color"
           >VER DETALLES DE MODELO
           <b-icon-arrow-right class="ml-2"></b-icon-arrow-right>
         </b-list-group-item>
+        </b-link>
         <b-list-group-item class="vehiculo-footer"
           >Imagenes meramente ilustrativas</b-list-group-item
         >
