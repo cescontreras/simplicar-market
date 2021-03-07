@@ -2,7 +2,9 @@
   <b-navbar variant="faded" type="light" class="nav-bar">
     <div class="nav-brand">
       <b-navbar-brand href="#">
-        <img src="@/assets/img/logo.png" alt="Kitten" id="logo" />
+        <b-link to="/">
+          <img src="@/assets/img/logo.png" alt="Kitten" id="logo" />
+        </b-link>
       </b-navbar-brand>
 
       <b-navbar-nav>
@@ -27,19 +29,13 @@
       </p>
     </div>
 
-    <b-sidebar
-      id="sidebar-backdrop"
-      title="NISSAN"
-      :backdrop-variant="variant"
-      backdrop
-      shadow
-    >
+    <b-sidebar id="sidebar-backdrop" title="NISSAN" backdrop shadow>
       <b-nav-item href="#" class="nav-link">
         <strong>VEHICULOS</strong></b-nav-item
       >
       <b-nav-item href="#" class="nav-link"
         ><strong>DESCUBRI NISSAN</strong></b-nav-item
-      >     
+      >
     </b-sidebar>
 
     <b-nav-form class="nav-form">
