@@ -6,18 +6,53 @@
       </b-navbar-brand>
 
       <b-navbar-nav>
-        <b-nav-item href="#"> <strong>VEHICULOS</strong></b-nav-item>
-        <b-nav-item href="#"><strong>DESCUBRI NISSAN</strong></b-nav-item>
+        <b-nav-item href="#" class="nav-link">
+          <strong>VEHICULOS</strong></b-nav-item
+        >
+        <b-nav-item href="#" class="nav-link"
+          ><strong>DESCUBRI NISSAN</strong></b-nav-item
+        >
       </b-navbar-nav>
     </div>
 
+    <div class="nav-brand-mobile">
+      <b-navbar-brand href="#">
+        <img src="@/assets/img/logo.png" alt="Kitten" id="logo" />
+      </b-navbar-brand>
+      <p class="h3 mb-2">
+        <b-icon-list
+          v-b-toggle.sidebar-backdrop
+          style="cursor: pointer;"
+        ></b-icon-list>
+      </p>
+    </div>
+
+    <b-sidebar
+      id="sidebar-backdrop"
+      title="NISSAN"
+      :backdrop-variant="variant"
+      backdrop
+      shadow
+    >
+      <b-nav-item href="#" class="nav-link">
+        <strong>VEHICULOS</strong></b-nav-item
+      >
+      <b-nav-item href="#" class="nav-link"
+        ><strong>DESCUBRI NISSAN</strong></b-nav-item
+      >     
+    </b-sidebar>
+
     <b-nav-form class="nav-form">
+      <b-input-group-prepend>
+        <p class="h4 mb-2">
+          <b-icon-search class="search-icon ml-lg-2"></b-icon-search>
+        </p>
+      </b-input-group-prepend>
       <b-form-input
         size="lg"
         class="mr-sm-2 mr-lg-12 search-input"
-        placeholder="BUSCAR POR MODELO O VEHICULO"
+        placeholder="   BUSCAR POR MODELO O VEHICULO"
       >
-      <b-icon-search></b-icon-search>
       </b-form-input>
     </b-nav-form>
   </b-navbar>
@@ -63,7 +98,39 @@ export default {
   width: 20vw;
 }
 
-.search-input::placeholder{
+.search-input::placeholder {
   font-size: 15px;
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.search-icon {
+  position: absolute;
+}
+
+.nav-brand-mobile {
+  display: none;
+}
+
+@media screen and (max-width: 800px) {
+  .nav-form {
+    display: none;
+  }
+
+  .nav-brand {
+    display: none;
+  }
+
+  .nav-brand-mobile {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .nav-mobile {
+    display: none;
+  }
 }
 </style>
