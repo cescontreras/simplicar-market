@@ -1,4 +1,4 @@
-const PROXY_URL = "http://localhost:8010/proxy"
+const PROXY_URL = "http://localhost:8010/proxy";
 
 export const state = () => ({
   vehiculos: [],
@@ -16,32 +16,35 @@ export const mutations = {
 
 export const actions = {
   async getVehiculos({ commit }) {
-    try {
-      const vehiculos = await this.$axios.$get(`${PROXY_URL}/product`);      
+    try {      
+      const vehiculos = await this.$axios.$get(`${PROXY_URL}/product`);
       commit("setVehiculos", vehiculos.results);
     } catch (error) {
-      console.log(error);  
-    }    
+      console.log(error);
+    }
   },
-  //local
-  async getVehiculo({ commit, state }, id) {
+  async getVehiculo({ commit, state, dispatch }, id) {
     try {
       // const vehiculo = await this.$axios.$get(`${PROXY_URL}/product/${id}`);
-      // console.log(vehiculo, 'respondio');
-      const vehiculo = state.vehiculos[id]      
+      
+      //local
+      if(!state.vehiculos.length) {
+        await dispatch('getVehiculos')        
+      }
+      const vehiculo = state.vehiculos[id];           
       commit("setVehiculo", vehiculo);
+      return vehiculo
     } catch (error) {
-      console.log(error);  
-    }    
+      console.log(error);
+    }
   },
   async lead({ commit }, userInfo) {
     try {
-      console.log('entro');
-      const res = await this.$axios.$post(`${PROXY_URL}/lead`, userInfo);
-      console.log(res);
+      console.log("entro");
+      const res = await this.$axios.$get(`${PROXY_URL}/lead`, userInfo);
+      return res;
     } catch (error) {
-      console.log(error);  
-    }    
-  },
-
+      console.log(error);
+    }
+  }
 };

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mt-2">
     <b-card
       no-body
       border-variant="light"
@@ -18,7 +18,7 @@
           PRECIO DESDE
         </b-card-text>
         <b-card-text class="label-precio-2">
-          {{vehiculo.amount + ' ' + vehiculo.currency}}
+          {{vehiculo.amount + ' ' + vehiculo.currency.toUpperCase()}}
         </b-card-text>
       </b-card-body>
 

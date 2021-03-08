@@ -42,8 +42,4 @@ html {
   margin: 0;
 }
 
-.app {
-  width: 100vw;
-}
-
 </style>

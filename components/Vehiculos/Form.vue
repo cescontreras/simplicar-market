@@ -6,11 +6,7 @@
       asesores se pueda contactar contigo
     </p>
     <div class="form">
-      <b-form-group
-        id="fullname"
-        class="form-input"
-        label-for="input-1"
-      >
+      <b-form-group id="fullname" class="form-input" label-for="input-1">
         <b-form-input
           id="input-1"
           size="lg"
@@ -39,8 +35,7 @@
         ></b-form-input>
       </b-form-group>
 
-      <b-form-group id="phone" class="form-input"
-        label-for="input-3">
+      <b-form-group id="phone" class="form-input" label-for="input-3">
         <b-form-input
           id="input-3"
           size="lg"
@@ -51,7 +46,26 @@
         ></b-form-input>
       </b-form-group>
 
-      <b-button block class="form-btn">ENVIARME LA COTIZACIÓN POR EMAIL</b-button>
+      <b-button block class="form-btn" type="button" @click="submit"
+        >ENVIARME LA COTIZACIÓN POR EMAIL</b-button
+      >
+      <b-alert
+        v-model="showDismissibleAlert"
+        variant="danger"
+        class="mt-4"
+        dismissible
+      >
+        Datos no Válidos !
+      </b-alert>
+
+      <b-alert
+        v-model="showStatusAlert"
+        variant="success"
+        class="mt-2"
+        dismissible
+      >
+        {{submitStatus.msg}}
+      </b-alert>
     </div>
   </div>
 </template>
@@ -78,8 +92,31 @@ export default {
       email: "",
       fullname: "",
       phone: "",
-      product: this.$route.params.id
+      product: this.$route.params.id,
+      showDismissibleAlert: false,
+      submitStatus: {},
+      showStatusAlert: false
     };
+  },
+  methods: {
+    async submit() {
+      try {
+        if (!/\S+@\S+\.\S+/.test(this.email) || !this.fullname || !this.phone) {
+          return (this.showDismissibleAlert = true);
+        }
+        const userInfo = {
+          fullname: this.fullname,
+          email: this.email,
+          phone: this.phone,
+          product: this.product
+        };
+        const res = await this.$store.dispatch("store/lead", userInfo);
+        this.submitStatus = res
+        this.showStatusAlert = true        
+      } catch (error) {
+        console.log(error);        
+      }
+    }
   }
 };
 </script>
@@ -109,7 +146,7 @@ export default {
 
 .form-input ::placeholder {
   font-size: small;
-  color: rgba(0,0,0,0.5);
+  color: rgba(0, 0, 0, 0.5);
 }
 
 .form-btn {

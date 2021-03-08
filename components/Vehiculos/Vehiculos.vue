@@ -58,7 +58,6 @@ export default {
     this.$nextTick(async () => {
       this.$nuxt.$loading.start();
       await this.$store.dispatch("store/getVehiculos");
-      console.log(this.vehiculos, "state");
       this.$nuxt.$loading.finish();
     });
   }

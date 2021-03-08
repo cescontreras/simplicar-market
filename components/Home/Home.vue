@@ -1,6 +1,6 @@
 <template>
   <div class="container home">
-    <div class="banner">
+    <div class="banner-content">
       <b-img-lazy
         fluid
         src="@/assets/img/Nissan-lineup.png"
@@ -17,20 +17,22 @@
           >
         </p>
         <p><strong>Probanos!</strong></p>
-        <b-link to="vehiculos">
-          <b-button variant="danger" class="banner-btn"
-            >Ingresar a Nissan Store <b-icon-arrow-right class="ml-2"></b-icon-arrow-right>
-          </b-button>
-        </b-link>
+
       </div>
     </div>
+        <b-link to="vehiculos" class="banner-link">
+          <b-button variant="danger" class="banner-btn">
+            Ingresar a Nissan Store
+            <b-icon-arrow-right class="ml-2"></b-icon-arrow-right>
+          </b-button>
+        </b-link>
   </div>
 </template>
 
 <script>
 export default {
   name: "Home"
-}
+};
 </script>
 
 <style scoped>
@@ -46,6 +48,7 @@ export default {
 
 .home {
   display: flex;
+  flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
 }
@@ -79,7 +82,7 @@ export default {
   left: 0;
 }
 
-.banner {
+.banner-content {
   width: 100%;
 }
 
@@ -88,21 +91,28 @@ export default {
   height: 80vh;
   position: absolute;
   filter: blur(4px);
-  background-color: rgba(255, 255, 255, 0.3);
-  /* backdrop-filter: blur(1px); */
-
 }
 
 .text-content {
   margin: 10vh 5vw;
   width: 50%;
   height: 100%;
-  backdrop-filter: blur(1px);
   text-align: left;
+  text-shadow: 0px 0px 4px #e7e7e7;
+  font-weight: 800;
 }
 
 .banner-btn {
   width: 50%;
+  z-index: 1;
+}
+
+.banner-link {
+  text-align: left;
+  width: 100%;
+  z-index: 1;
+  margin: 0vh 5vw;
+
 }
 
 @media screen and (max-width: 800px) {
@@ -111,5 +121,4 @@ export default {
     width: 100%;
   }
 }
-
 </style>

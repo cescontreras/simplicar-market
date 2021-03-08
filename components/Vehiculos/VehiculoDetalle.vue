@@ -23,6 +23,7 @@
               v-model="slide"
               controls
               indicators
+              background="#000000"
               img-width="1024"
               img-height="480"
               no-animation
@@ -51,11 +52,11 @@
               <p><Fa icon="car"></Fa> {{ vehiculo.detail.characteristics.body }}</p>
             </div>
           </div>
-          <a :href="vehiculo.specs.description" class="tienda-link">
+          <b-link :href="vehiculo.specs.description" class="tienda-link">
             <strong>
               <p>VER TODAS LAS CARACTERISTICAS</p>
             </strong>
-          </a>
+          </b-link>
         </div>
         <Form />
       </div>
@@ -75,10 +76,10 @@ export default {
       imgUrl: "https://s3.sa-east-1.amazonaws.com/simplimotos-stg.com/"
     };
   },
-  computed: {
-    ...mapState({
-      vehiculo: state => state.store.vehiculo
-    })
+  props: {
+    vehiculo: {
+      type: Object
+    }
   },
   methods: {
     onSlideStart(slide) {
@@ -87,19 +88,11 @@ export default {
     onSlideEnd(slide) {
       this.sliding = false;
     }
-  },
-  mounted() {
-    console.log(this.$route.params.id);
-    this.$nextTick(() => {
-      this.$nuxt.$loading.start();
-      // this.$store.dispatch('store/getVehiculo', this.$route.params.id)
-      this.$nuxt.$loading.finish();
-    });    
   }
 };
 </script>
 
-<style>
+<style scoped>
 .detalle-main {
   margin: 0px 5vw;
 }
@@ -152,6 +145,7 @@ export default {
 
 .carousel {
   border-bottom: solid 0.5px rgba(0, 0, 0, 0.5);
+  color: black;
 }
 
 .detalle-info {
