@@ -6,8 +6,7 @@
 import VehiculoDetalle from "@/components/Vehiculos/VehiculoDetalle.vue";
 
 export default {
-  components:{VehiculoDetalle},
-
+  components:{ VehiculoDetalle }
 }
 </script>
 

@@ -17,20 +17,18 @@ export const mutations = {
 export const actions = {
   async getVehiculos({ commit }) {
     try {
-      console.log('entro');
-      const vehiculos = await this.$axios.$get(`${PROXY_URL}/product`);
-      console.log(vehiculos, 'respondio');      
+      const vehiculos = await this.$axios.$get(`${PROXY_URL}/product`);      
       commit("setVehiculos", vehiculos.results);
     } catch (error) {
       console.log(error);  
     }    
   },
-  async getVehiculo({ commit }, id) {
+  //local
+  async getVehiculo({ commit, state }, id) {
     try {
-      console.log('entro');
-      const vehiculo = await this.$axios.$get(`${PROXY_URL}/product/${id}`);
-      console.log(vehiculo, 'respondio');
-      
+      // const vehiculo = await this.$axios.$get(`${PROXY_URL}/product/${id}`);
+      // console.log(vehiculo, 'respondio');
+      const vehiculo = state.vehiculos[id]      
       commit("setVehiculo", vehiculo);
     } catch (error) {
       console.log(error);  

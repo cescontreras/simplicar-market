@@ -4,7 +4,7 @@
       no-body
       border-variant="light"
       style="max-width: 25rem;"
-      img-src="https://placekitten.com/380/200"
+      :img-src="`${imgUrl}${vehiculo.gallery[0].large}`"
       img-alt="Image"
       img-top
       align="center"
@@ -23,7 +23,7 @@
       </b-card-body>
 
       <b-list-group flush>
-        <b-link to="vehiculos/id">
+        <b-link :to="`vehiculos/${index}`" @click="getVehiculo(index)">
           <b-list-group-item class="nissan-color"
             >VER DETALLES DE MODELO
             <b-icon-arrow-right class="ml-2"></b-icon-arrow-right>
@@ -42,7 +42,7 @@ export default {
   name: "VehiculoCard",
   data() {
     return{
-      imgUrl: 'https://s3.sa-east-1.amazonaws.com/simplimotos-stg.com'
+      imgUrl: 'https://s3.sa-east-1.amazonaws.com/simplimotos-stg.com/'
     }
   },
   props:{
@@ -50,15 +50,13 @@ export default {
       type: Object,
       require: true,
       default: {}
-    }
+    },
+    index: Number
   },
-  mounted() {
-    this.$nextTick(() => {
-      this.$nuxt.$loading.start()
-      if(this.vehiculo){
-        this.$nuxt.$loading.finish()
-      }
-    })
+  methods:{
+    getVehiculo(index) {      
+      this.$store.dispatch('store/getVehiculo', this.$route.params.id)     
+    }
   }
 };
 </script>

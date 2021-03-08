@@ -33,8 +33,9 @@
     </div>
     <div class="vehiculos-catalogo">
       <VehiculoCard
-        v-for="vehiculo in vehiculos"
+        v-for="(vehiculo, index) in vehiculos"
         :key="vehiculo.id"
+        :index="index"
         :vehiculo="vehiculo"
       />
     </div>

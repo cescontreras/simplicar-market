@@ -10,43 +10,54 @@
         </strong>
       </b-link>
       <p>/</p>
-      <p class="breadcrumb-model">VERSA</p>
+      <p class="breadcrumb-model">{{ vehiculo.model.toUpperCase() }}</p>
     </div>
     <div class="detalle-main">
       <div class="detalle-container">
         <div class="vehiculo-detalle">
-          <h1>Modelo</h1>
-          <h1>Precio</h1>
+          <h1>{{ vehiculo.model + " " + vehiculo.name }}</h1>
+          <h1>{{ vehiculo.amount + " " + vehiculo.currency.toUpperCase() }}</h1>
           <div class="carousel">
             <b-carousel
               id="carousel-1"
               v-model="slide"
-              :interval="4000"
               controls
               indicators
               img-width="1024"
               img-height="480"
-              style="text-shadow: 1px 1px 2px #333;"
-              @sliding-start="onSlideStart"
-              @sliding-end="onSlideEnd"
+              no-animation
             >
               <b-carousel-slide
-                img-src="https://picsum.photos/1024/480/?image=58"
+                :img-src="`${imgUrl}${vehiculo.gallery[0].large}`"
+              ></b-carousel-slide>
+              <b-carousel-slide
+                :img-src="`${imgUrl}${vehiculo.gallery[1].large}`"
+              ></b-carousel-slide>
+              <b-carousel-slide
+                :img-src="`${imgUrl}${vehiculo.gallery[2].large}`"
+              ></b-carousel-slide>
+              <b-carousel-slide
+                :img-src="`${imgUrl}${vehiculo.gallery[3].large}`"
               ></b-carousel-slide>
             </b-carousel>
           </div>
           <div class="detalle-info">
             <div class="detalle-columna">
-              <p><Fa icon="tachometer-alt"></Fa> Motor</p>
-              <p><Fa icon="gas-pump"></Fa> Nafta</p>
+              <p><Fa icon="tachometer-alt"></Fa> {{ vehiculo.detail.characteristics.engine }}</p>
+              <p><Fa icon="gas-pump"></Fa> {{ vehiculo.detail.characteristics.gas_type }}</p>
             </div>
             <div class="detalle-columna">
-              <p><Fa :icon="['far', 'file']"></Fa> Garantia</p>
-              <p><Fa icon="car"></Fa> Sedan</p>
+              <p><Fa :icon="['far', 'file']"></Fa> {{ vehiculo.detail.characteristics.warranty }}</p>
+              <p><Fa icon="car"></Fa> {{ vehiculo.detail.characteristics.body }}</p>
             </div>
           </div>
+          <a :href="vehiculo.specs.description" class="tienda-link">
+            <strong>
+              <p>VER TODAS LAS CARACTERISTICAS</p>
+            </strong>
+          </a>
         </div>
-          <Form />
+        <Form />
       </div>
     </div>
   </div>
@@ -60,12 +71,13 @@ export default {
   data() {
     return {
       slide: 0,
-      sliding: null
+      sliding: null,
+      imgUrl: "https://s3.sa-east-1.amazonaws.com/simplimotos-stg.com/"
     };
   },
   computed: {
     ...mapState({
-      vehiculo: state.store.vehiculo
+      vehiculo: state => state.store.vehiculo
     })
   },
   methods: {
@@ -78,12 +90,11 @@ export default {
   },
   mounted() {
     console.log(this.$route.params.id);
-    // this.$nextTick(async () => {
-    //   this.$nuxt.$loading.start()
-    //   await this.$store.dispatch('store/getVehiculo', this.$route.params.id)
-    //   console.log(this.vehiculo, 'state');
-    //   this.$nuxt.$loading.finish()
-    // })
+    this.$nextTick(() => {
+      this.$nuxt.$loading.start();
+      // this.$store.dispatch('store/getVehiculo', this.$route.params.id)
+      this.$nuxt.$loading.finish();
+    });    
   }
 };
 </script>
@@ -140,7 +151,6 @@ export default {
 }
 
 .carousel {
-  padding-bottom: 5vh;
   border-bottom: solid 0.5px rgba(0, 0, 0, 0.5);
 }
 
@@ -169,5 +179,4 @@ export default {
     width: 100%;
   }
 }
-
 </style>
