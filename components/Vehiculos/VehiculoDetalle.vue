@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="detalle-gral">
     <div class="detalle-breadcrumb">
       <b-link to="/vehiculos" id="tienda-link-icon">
         <b-icon-arrow-left class="ml-2"></b-icon-arrow-left>
@@ -21,6 +21,7 @@
             <b-carousel
               id="carousel-1"
               v-model="slide"
+              interval="3000"
               controls
               indicators
               background="#000000"
@@ -42,7 +43,7 @@
               ></b-carousel-slide>
             </b-carousel>
           </div>
-          <div class="detalle-info">
+          <div class="detalle-info ml-4 mr-2">
             <div class="detalle-columna">
               <p><Fa icon="tachometer-alt"></Fa> {{ vehiculo.detail.characteristics.engine }}</p>
               <p><Fa icon="gas-pump"></Fa> {{ vehiculo.detail.characteristics.gas_type }}</p>
@@ -159,7 +160,7 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  font-size: 20px;
+  font-size: 1rem;
   border-bottom: solid 0.5px rgba(0, 0, 0, 0.5);
   color: rgba(0, 0, 0, 0.5);
 }
@@ -171,6 +172,11 @@ export default {
 
   .vehiculo-detalle {
     width: 100%;
+  }
+
+  .detalle-gral {
+    margin: 0px;
+    padding: 0px;
   }
 }
 </style>

@@ -3,7 +3,7 @@
     <div class="nav-brand">
       <b-navbar-brand href="#">
         <b-link to="/">
-          <img src="@/assets/img/logo.png" alt="Kitten" id="logo" />
+          <img src="@/assets/img/logo.png" alt="Nissan" id="logo" />
         </b-link>
       </b-navbar-brand>
 
@@ -19,7 +19,9 @@
 
     <div class="nav-brand-mobile">
       <b-navbar-brand href="#">
+        <b-link to="/">
         <img src="@/assets/img/logo.png" alt="Kitten" id="logo" />
+        </b-link>
       </b-navbar-brand>
       <p class="h3 mb-2">
         <b-icon-list
@@ -30,10 +32,10 @@
     </div>
 
     <b-sidebar id="sidebar-backdrop" title="NISSAN" backdrop shadow>
-      <b-nav-item href="#" class="nav-link">
+      <b-nav-item to="/vehiculos" class="nav-link">
         <strong>VEHICULOS</strong></b-nav-item
       >
-      <b-nav-item href="#" class="nav-link"
+      <b-nav-item to="#" class="nav-link"
         ><strong>DESCUBRI NISSAN</strong></b-nav-item
       >
     </b-sidebar>

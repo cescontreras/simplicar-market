@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-2">
+  <div class="mt-2 card">
     <b-card
       no-body
       border-variant="light"
@@ -86,5 +86,11 @@ export default {
   opacity: 0.5;
   font-size: small;
   font-style: italic;
+}
+
+@media screen and (max-width: 800px) {
+ .card {
+    max-width: 20rem;
+  }
 }
 </style>

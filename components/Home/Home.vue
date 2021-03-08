@@ -120,5 +120,9 @@ export default {
     margin: 10vh 5vw;
     width: 100%;
   }
+
+  .banner-btn {
+    width: 80%;
+  }
 }
 </style>
