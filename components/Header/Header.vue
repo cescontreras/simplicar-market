@@ -41,7 +41,7 @@
     <b-nav-form class="nav-form">
       <b-input-group-prepend>
         <p class="h4 mb-2">
-          <b-icon-search class="search-icon ml-lg-2"></b-icon-search>
+          <Fa icon="search"></Fa>
         </p>
       </b-input-group-prepend>
       <b-form-input

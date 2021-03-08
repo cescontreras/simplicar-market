@@ -3,7 +3,7 @@
     <b-card
       no-body
       border-variant="light"
-      style="max-width: 20rem;"
+      style="max-width: 25rem;"
       img-src="https://placekitten.com/380/200"
       img-alt="Image"
       img-top
@@ -24,10 +24,10 @@
 
       <b-list-group flush>
         <b-link to="vehiculos/id">
-        <b-list-group-item class="nissan-color"
-          >VER DETALLES DE MODELO
-          <b-icon-arrow-right class="ml-2"></b-icon-arrow-right>
-        </b-list-group-item>
+          <b-list-group-item class="nissan-color"
+            >VER DETALLES DE MODELO
+            <b-icon-arrow-right class="ml-2"></b-icon-arrow-right>
+          </b-list-group-item>
         </b-link>
         <b-list-group-item class="vehiculo-footer"
           >Imagenes meramente ilustrativas</b-list-group-item
