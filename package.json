@@ -6,7 +6,8 @@
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt generate"
+    "generate": "nuxt generate",
+    "proxy": "lcp --proxyUrl https://4my1q6hsyo.api.quickmocker.com"
   },
   "dependencies": {
     "@fortawesome/free-regular-svg-icons": "^5.15.2",
@@ -15,6 +16,7 @@
     "bootstrap": "^4.6.0",
     "bootstrap-vue": "^2.21.2",
     "core-js": "^3.8.3",
+    "local-cors-proxy": "^1.1.0",
     "nuxt": "^2.14.12"
   },
   "devDependencies": {

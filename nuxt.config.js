@@ -25,6 +25,12 @@ export default {
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
+  loadingIndicator: {
+    name: 'circle',
+    color: '#3B8070',
+    background: 'white'
+  },
+
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     [
@@ -43,12 +49,9 @@ export default {
   },
 
   axios: {
-    proxy: true
+    proxy: true,
   },
 
-  proxy: {
-    '/api/': { target: 'http://proxy.example.com:8080', pathRewrite: { '^/api/': '' } }
-  },
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/bootstrap

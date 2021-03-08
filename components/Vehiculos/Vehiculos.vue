@@ -32,7 +32,11 @@
       </div>
     </div>
     <div class="vehiculos-catalogo">
-      <VehiculoCard />
+      <VehiculoCard
+        v-for="vehiculo in vehiculos"
+        :key="vehiculo.id"
+        :vehiculo="vehiculo"
+      />
     </div>
   </div>
 </template>
@@ -49,9 +53,13 @@ export default {
       vehiculos: state => state.store.vehiculos
     })
   },
-  mounted() {
-    // console.log(this.vehiculos);
-    this.$store.dispatch('store/getVehiculos')
+  async mounted() {
+    this.$nextTick(async () => {
+      this.$nuxt.$loading.start();
+      await this.$store.dispatch("store/getVehiculos");
+      console.log(this.vehiculos, "state");
+      this.$nuxt.$loading.finish();
+    });
   }
 };
 </script>
@@ -82,7 +90,7 @@ export default {
 
 .vehiculos-catalogo {
   width: 100%;
-  margin: 5vh 5vw;
+  margin: 5vh 0vw;
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;

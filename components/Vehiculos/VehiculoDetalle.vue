@@ -54,15 +54,20 @@
 
 <script>
 import Form from "./Form";
-
+import { mapState } from "vuex";
 export default {
+  components: { Form },
   data() {
     return {
       slide: 0,
       sliding: null
     };
   },
-  components: { Form },
+  computed: {
+    ...mapState({
+      vehiculo: state.store.vehiculo
+    })
+  },
   methods: {
     onSlideStart(slide) {
       this.sliding = true;
@@ -73,6 +78,12 @@ export default {
   },
   mounted() {
     console.log(this.$route.params.id);
+    // this.$nextTick(async () => {
+    //   this.$nuxt.$loading.start()
+    //   await this.$store.dispatch('store/getVehiculo', this.$route.params.id)
+    //   console.log(this.vehiculo, 'state');
+    //   this.$nuxt.$loading.finish()
+    // })
   }
 };
 </script>

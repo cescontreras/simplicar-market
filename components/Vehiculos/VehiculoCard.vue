@@ -10,7 +10,7 @@
       align="center"
     >
       <template #header>
-        <h4 class="mb-0">car model</h4>
+        <h4 class="mb-0">{{vehiculo.model + ' ' + vehiculo.name}}</h4>
       </template>
 
       <b-card-body class="vehiculo-precio">
@@ -18,7 +18,7 @@
           PRECIO DESDE
         </b-card-text>
         <b-card-text class="label-precio-2">
-          PRECIO
+          {{vehiculo.amount + ' ' + vehiculo.currency}}
         </b-card-text>
       </b-card-body>
 
@@ -39,7 +39,27 @@
 
 <script>
 export default {
-  name: "VehiculoCard"
+  name: "VehiculoCard",
+  data() {
+    return{
+      imgUrl: 'https://s3.sa-east-1.amazonaws.com/simplimotos-stg.com'
+    }
+  },
+  props:{
+    vehiculo: {
+      type: Object,
+      require: true,
+      default: {}
+    }
+  },
+  mounted() {
+    this.$nextTick(() => {
+      this.$nuxt.$loading.start()
+      if(this.vehiculo){
+        this.$nuxt.$loading.finish()
+      }
+    })
+  }
 };
 </script>
 
